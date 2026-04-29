@@ -1,0 +1,40 @@
+# .github/workflows/deploy_dev.yml
+name: Deploy Dev to EC2
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy Dev Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Dev EC2
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DEV_HOST }}
+          username: ubuntu
+          key: ${{ secrets.DEV_SSH_KEY }}
+          port: 22
+          script: |
+            cd /home/ubuntu/go-project
+
+            if [ ! -d .git ]; then
+              git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git .
+            fi
+
+            git fetch origin
+            git checkout dev
+            git pull origin dev
+
+            docker compose down
+            docker compose up -d --build
+
+            docker image prune -f
