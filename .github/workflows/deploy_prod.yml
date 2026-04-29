@@ -27,6 +27,7 @@ jobs:
           key: ${{ secrets.PROD_SSH_KEY }}
           port: 22
           script: |
+            mkdir -p /home/ubuntu/auth_backend
             cd /home/ubuntu/auth_backend
 
             if [ ! -d .git ]; then
