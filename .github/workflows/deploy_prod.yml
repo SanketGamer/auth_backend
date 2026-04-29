@@ -38,6 +38,9 @@ jobs:
             git checkout main
             git pull origin main
 
+            go build -o auth_project cmd/main.go
+            pm2 restart auth_project || pm2 start ./auth_project --name auth_project
+
             # docker compose down
             # docker compose up -d --build
 
