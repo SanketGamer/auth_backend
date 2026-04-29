@@ -2,12 +2,14 @@
 # .github/workflows/deploy_prod.yml
 name: Deploy Prod to EC2
 
+#jab bhi main branch pe koi push ho tab run jobs
 on:
   push:
     branches:
       - main
   workflow_dispatch:
 
+#
 jobs:
   deploy:
     name: Deploy Production Server
@@ -28,14 +30,14 @@ jobs:
             cd /home/ubuntu/auth_backend
 
             if [ ! -d .git ]; then
-              git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git .
+              git clone https://github.com/SanketGamer/auth_backend.git .
             fi
 
             git fetch origin
             git checkout main
             git pull origin main
 
-            docker compose down
-            docker compose up -d --build
+            # docker compose down
+            # docker compose up -d --build
 
-            docker image prune -f
+            # docker image prune -f
