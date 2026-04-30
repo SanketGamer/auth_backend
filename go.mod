@@ -1,6 +1,6 @@
 module user_management_system
 
-go 1.25.8
+go 1.25.0
 
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
