@@ -9,7 +9,6 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/google/uuid"
 	"github.com/joho/godotenv"
-	"gorm.io/gorm"
 )
 
 type SignedDetails struct{
@@ -28,10 +27,10 @@ func init(){
 	}
 }
 
-var db *gorm.DB
-func InitDB(database *gorm.DB) {
-	db = database
-}
+// var db *gorm.DB
+// func InitDB(database *gorm.DB) {
+// 	db = database
+// }
 
 var secret_key=os.Getenv("SECRET_KEY")
 

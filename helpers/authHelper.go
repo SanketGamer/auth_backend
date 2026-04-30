@@ -7,14 +7,12 @@ import (
 )
 
 //check whether the current user has the required role
-func CheckUserType(c *gin.Context,role string) (err error){
+func CheckUserType(c *gin.Context,role string) error{
 	userType:=c.GetString("user_type")
-	err=nil
 	if userType!=role{
-		err=errors.New("Unauthorize to access this resource")
-		return err
+		return errors.New("Unauthorize to access this resource")
 	}
-	return err
+	return nil
 }
 
 //It ensures a normal USER can only access their own data

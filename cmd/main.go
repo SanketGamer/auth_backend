@@ -49,5 +49,7 @@ func main(){
 	})
 
 	fmt.Printf("%s",fmt.Sprintf("Server is running from port no %s",port))
-	router.Run(":"+port)
+	if err:=router.Run(":"+port);err!=nil{
+		log.Fatal("Failed to the server",err)
+	}
 }

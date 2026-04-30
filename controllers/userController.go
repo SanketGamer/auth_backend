@@ -150,8 +150,11 @@ func Login() gin.HandlerFunc{
 	          return
 			}
 
-			helpers.UpdateAllToken(token,refreshToken,founduser.ID)
-
+			err=helpers.UpdateAllToken(token,refreshToken,founduser.ID)
+			if err!=nil{
+				log.Fatal("token not update",err)
+			}
+			
 			updateUser,err:=repository.FindByUserID(ctx,founduser.ID)
 			if err!=nil{
 				c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to fetch updated user"})
