@@ -1,0 +1,37 @@
+name: Go Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  test:
+    name: Run Go Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+
+      - name: Install dependencies
+        run: go mod tidy
+
+      - name: Create .env file
+        run: |
+          echo "DB_HOST=aws-1-ap-southeast-2.pooler.supabase.com" >> .env
+          echo "DB_PORT=6543" >> .env
+          echo "DB_USER=postgres.sugveureurtwttucfvnq " >> .env
+          echo "DB_PASSWORD=Sanketdas123" >> .env
+          echo "DB_NAME=postgres" >> .env
+
+      - name: Run tests
+        run: go test ./... -v -cover
+
+      - name: Show coverage
+        run: go test ./... -coverprofile=coverage.out && go tool cover -func=coverage.out

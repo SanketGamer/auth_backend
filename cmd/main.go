@@ -7,10 +7,10 @@ import (
 	"user_management_system/database"
 	"user_management_system/notifier"
 	routes "user_management_system/routes"
-
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
+
 func main(){
 	err:=godotenv.Load(".env")
 	if err!=nil{
