@@ -9,7 +9,7 @@ on:
       - main
   workflow_dispatch:
 
-#
+#this are we to run to auto deployment
 jobs:
   deploy:
     name: Deploy Production Server
