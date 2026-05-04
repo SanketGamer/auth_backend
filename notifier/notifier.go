@@ -40,7 +40,7 @@ func NewNotifier(bufferSize int)*Notifier{
 	logger: log.New(file,"",log.LstdFlags),
   }
   go n.worker()
-
+  
   return n
 }
 
