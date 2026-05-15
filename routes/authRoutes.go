@@ -16,4 +16,5 @@ func AuthRoutes(incomingRoutes *gin.RouterGroup,n *notifier.Notifier){
     auth.POST("/signup",controllers.Signup(n))
     auth.POST("/login",controllers.Login())
 	auth.DELETE("/delete/:id",middleware.Authenticate(), controllers.DeleteUser())
+	//hello 
 }

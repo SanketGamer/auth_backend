@@ -19,3 +19,4 @@ type User struct {
 	Updated_at    time.Time `json:"updated_at"`
    //User_id       string    `json:"user_id"`
 }
+

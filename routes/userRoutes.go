@@ -14,4 +14,6 @@ func UserRoutes(incomingRoutes *gin.RouterGroup){
 
    users.GET("/profile",controllers.GetUsers())
    users.GET("/:user_id",controllers.Getuser())
+
+   //hello
 }
